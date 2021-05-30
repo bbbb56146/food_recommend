@@ -13,6 +13,8 @@
 		3E2642172663D3EB00F043B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2642162663D3EB00F043B5 /* Assets.xcassets */; };
 		3E26421A2663D3EB00F043B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2642192663D3EB00F043B5 /* Preview Assets.xcassets */; };
 		3E26421D2663D3EB00F043B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E26421B2663D3EB00F043B5 /* LaunchScreen.storyboard */; };
+		3E2642292664180400F043B5 /* storeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2642282664180400F043B5 /* storeList.swift */; };
+		3E26422B26641D4200F043B5 /* FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E26422A26641D4200F043B5 /* FoodList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		3E2642192663D3EB00F043B5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3E26421C2663D3EB00F043B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E26421E2663D3EB00F043B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E2642282664180400F043B5 /* storeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storeList.swift; sourceTree = "<group>"; };
+		3E26422A26641D4200F043B5 /* FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				3E2642162663D3EB00F043B5 /* Assets.xcassets */,
 				3E26421B2663D3EB00F043B5 /* LaunchScreen.storyboard */,
 				3E26421E2663D3EB00F043B5 /* Info.plist */,
+				3E2642282664180400F043B5 /* storeList.swift */,
+				3E26422A26641D4200F043B5 /* FoodList.swift */,
 				3E2642182663D3EB00F043B5 /* Preview Content */,
 			);
 			path = food_recommend;
@@ -147,6 +153,8 @@
 			files = (
 				3E2642112663D3E300F043B5 /* AppDelegate.swift in Sources */,
 				3E2642132663D3E300F043B5 /* SceneDelegate.swift in Sources */,
+				3E26422B26641D4200F043B5 /* FoodList.swift in Sources */,
+				3E2642292664180400F043B5 /* storeList.swift in Sources */,
 				3E2642152663D3E300F043B5 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
