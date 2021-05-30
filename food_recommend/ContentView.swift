@@ -22,15 +22,15 @@ struct ContentView: View {
             .alert(isPresented: self.$isAnalyzeStart){
                 Alert(title: Text("분석 중.."), message: Text("열심히 분석하고 있어요!"), dismissButton: .default(Text("취소")))
             }
-            
             NavigationView {
                 List(self.foodLists, id: \.name) { foodList in
-                    NavigationLink(destination: Text(foodList.name)){
+                    NavigationLink(destination: foodDetailView(selectedFood: foodList)){
                         FoodListCell(foodList: foodList)
                     }
                 }
-
-            }.navigationBarTitle(Text("오늘의 추천"))
+                .navigationBarTitle(Text("오늘의 메뉴"))
+                .navigationBarHidden(false)
+            }
             //navigation end
         }
        

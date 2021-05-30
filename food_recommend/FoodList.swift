@@ -6,9 +6,9 @@
 //
 
 struct FoodList {
-    var name: String
-    var imageUrl: String
-    var totalNum : Int
+    let name: String
+    let imageUrl: String
+    let totalNum : Int
 }
 
 extension FoodList {
@@ -17,7 +17,8 @@ extension FoodList {
         return [
             FoodList(name: "팬케이크", imageUrl: "pancakes-2291908_640", totalNum: 4),
             FoodList(name: "피자", imageUrl: "plate-2802332_640", totalNum: 22),
-            FoodList(name: "연어 스테이크", imageUrl: "salmon-518032_640", totalNum: 8)
+            FoodList(name: "연어 스테이크", imageUrl: "salmon-518032_640", totalNum: 8),
+            
         ]
     }
 }
