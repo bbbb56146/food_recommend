@@ -2,6 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../IOS_DaumMap_Sample_1.4.0/DaumMapLibrarySample_iOS/SDKDemoAPIKey.h">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "New Group">
+   </Group>
+   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
