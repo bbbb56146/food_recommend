@@ -7,10 +7,10 @@
 import SwiftUI
 
 struct ContentView: View {
-   @State private var selection = 2
+   @State private var selection = 1
     var body: some View {
         TabView(selection: $selection) {
-            Text("Tab Content 2").tabItem {
+            analyzeView().tabItem {
                 Image(systemName: "1.circle")
                 Text("분석")
                 .font(.headline) }.tag(1)
