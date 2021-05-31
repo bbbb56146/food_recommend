@@ -30,37 +30,69 @@ struct analyzeView: View {
             Button("Present Picker") {
                         isPresented.toggle()
                     }.sheet(isPresented: $isPresented) {
-                        let configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-                        PhotoPicker(configuration: configuration, isPresented: $isPresented)
+                       // var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+                       // configuration.selectionLimit=0
+                        //configuration.filter = .images
+                        PhotoPicker(isPresented: $isPresented)
                     }
         }
     }
 }
 struct PhotoPicker: UIViewControllerRepresentable {
-    let configuration: PHPickerConfiguration
+        
+    typealias UIViewControllerType = PHPickerViewController
     @Binding var isPresented: Bool
+    var itemProviders: [NSItemProvider] = []
+    var images: [UIImage] = []
     func makeUIViewController(context: Context) -> PHPickerViewController {
-        let controller = PHPickerViewController(configuration: configuration)
-        controller.delegate = context.coordinator
-        return controller
-    }
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) { }
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 0
+        configuration.filter = .any(of: [.images, .livePhotos])
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = context.coordinator
+        return picker
     }
     
-    // Use a Coordinator to act as your PHPickerViewControllerDelegate
-    class Coordinator: PHPickerViewControllerDelegate {
-      
-        private let parent: PhotoPicker
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
         
-        init(_ parent: PhotoPicker) {
-            self.parent = parent
-        }
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            print(results)
-            parent.isPresented = false // Set isPresented to false because picking has finished.
-        }
+    }
+    
+    func makeCoordinator() -> Coordinator {
+            return PhotoPicker.Coordinator(parent: self)
+    }
+    
+    class Coordinator: NSObject, PHPickerViewControllerDelegate, UINavigationControllerDelegate {
+            
+            var parent: PhotoPicker
+            
+            init(parent: PhotoPicker) {
+                    self.parent = parent
+            }
+            
+            func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+                    picker.dismiss(animated: true)
+                    if !results.isEmpty {
+                            parent.itemProviders = []
+                            parent.images = []
+                    }
+                    
+                    parent.itemProviders = results.map(\.itemProvider)
+                    loadImage()
+            }
+            
+            private func loadImage() {
+                    for itemProvider in parent.itemProviders {
+                            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                                    itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                                            if let image = image as? UIImage {
+                                                    self.parent.images.append(image)
+                                            } else {
+                                                    print("Could not load image", error?.localizedDescription ?? "")
+                                            }
+                                    }
+                            }
+                    }
+            }
     }
 }
 struct analyzeView_Previews: PreviewProvider {
