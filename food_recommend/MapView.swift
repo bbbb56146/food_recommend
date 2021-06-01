@@ -6,20 +6,15 @@
 //
 
 import SwiftUI
-#import <DaumMap/MTMapView.h>
+import MapKit
 
-struct MapView : UIViewRepresentable {
-    
-    func makeUIView(context: Context) -> MTMapView {
-        let view = MTMapView(frame: .zero)
-        return view
-    }
-    
-    func updateUIView(_ uiView: MTMapView, context: Context) {
-        
+struct MapView : View {
+    //서울 좌표
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    var body: some View {
+        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow))
     }
 }
-
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
