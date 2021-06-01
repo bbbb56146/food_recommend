@@ -29,6 +29,9 @@ struct foodDetailView: View {
                                 Text(store.addr).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                                 
                             }//Vstack end
+                            .onTapGesture{
+                                print("tapped \(store.name)")
+                            }
                             .padding()
                             .frame(height: 150)
                             .background(
