@@ -11,7 +11,7 @@ struct foodDetailView: View {
     var body: some View {
         ZStack {
             //맵뷰
-            //MapView()
+            MapView()
             //가게 리스트
             VStack{
                 Spacer()
