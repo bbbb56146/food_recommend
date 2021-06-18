@@ -10,33 +10,45 @@ import PhotosUI
 
 struct analyzeView: View {
     @State private var isPresented: Bool = false
-        @State var pickerResult: [UIImage] = []
-        var config: PHPickerConfiguration  {
-           var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-            config.filter = .images //videos, livePhotos...
-            config.selectionLimit = 0 //0 => any, set 1-2-3 for har limit
-            return config
-        }
-        
-        var body: some View {
-            ScrollView {
-                LazyVStack {
-                    Button("Present Picker") {
-                        isPresented.toggle()
-                    }.sheet(isPresented: $isPresented) {
-                        PhotoPicker(configuration: self.config,
-                                    pickerResult: $pickerResult,
-                                    isPresented: $isPresented)
-                    }
-                    ForEach(pickerResult, id: \.self) { image in
-                        Image.init(uiImage: image)
-                            .resizable()
-                            .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                }
+    @State var pickerResult: [UIImage] = []
+    var config: PHPickerConfiguration  {
+        var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+        config.filter = .images //videos, livePhotos...
+        config.selectionLimit = 0 //0 => any, set 1-2-3 for har limit
+        return config
+    }
+    
+    var body: some View {
+        VStack{
+            Text("사진 분석하기")
+                .font(.largeTitle)
+            Button("Present Picker") {
+                isPresented.toggle()
+            }.sheet(isPresented: $isPresented) {
+                PhotoPicker(configuration: self.config, pickerResult: $pickerResult, isPresented: $isPresented)
             }
+            //이미지 결과 가지고 분석 돌리기
+            
+            //분석한 결과 json으로 바꾸기
         }
+//        ScrollView {
+//            LazyVStack {
+//                Button("Present Picker") {
+//                    isPresented.toggle()
+//                }.sheet(isPresented: $isPresented) {
+//                    PhotoPicker(configuration: self.config,
+//                                pickerResult: $pickerResult,
+//                                isPresented: $isPresented)
+//                }
+//                ForEach(pickerResult, id: \.self) { image in
+//                    Image.init(uiImage: image)
+//                        .resizable()
+//                        .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
+//                        .aspectRatio(contentMode: .fit)
+//                }
+//            }
+//        }
+    }
 }
 struct PhotoPicker: UIViewControllerRepresentable {
     let configuration: PHPickerConfiguration
