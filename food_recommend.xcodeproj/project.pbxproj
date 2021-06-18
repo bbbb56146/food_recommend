@@ -74,13 +74,13 @@
 				3E2642162663D3EB00F043B5 /* Assets.xcassets */,
 				3E26421B2663D3EB00F043B5 /* LaunchScreen.storyboard */,
 				3E26421E2663D3EB00F043B5 /* Info.plist */,
+				3E263CA926644DB60062374E /* errorView.swift */,
 				3E2642282664180400F043B5 /* storeList.swift */,
 				3E26422A26641D4200F043B5 /* FoodList.swift */,
 				3E263CA326642E5A0062374E /* foodDetailView.swift */,
+				3E263CA726644AB50062374E /* analyzeView.swift */,
 				3E263CA5266446320062374E /* todayRecommendView.swift */,
 				3E2642182663D3EB00F043B5 /* Preview Content */,
-				3E263CA726644AB50062374E /* analyzeView.swift */,
-				3E263CA926644DB60062374E /* errorView.swift */,
 			);
 			path = food_recommend;
 			sourceTree = "<group>";

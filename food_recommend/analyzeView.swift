@@ -9,90 +9,76 @@ import SwiftUI
 import PhotosUI
 
 struct analyzeView: View {
-    @State var isAnalyzeStart: Bool = false
     @State private var isPresented: Bool = false
-    var body: some View {
-        VStack(alignment: .leading){
-            Text("사진을 분석합니다!")
-                .font(.largeTitle)
-                .fontWeight(.black)
-                .multilineTextAlignment(.leading)
-            //Spacer()
-            Button(action: {
-                print("button pressed!")
-                self.isAnalyzeStart = true
-            }) {
-                Text("분석하려면 누르세요..")
-            }
-            .alert(isPresented: self.$isAnalyzeStart){
-                Alert(title: Text("분석 중.."), message: Text("열심히 분석하고 있어요!"), dismissButton: .default(Text("취소")))
-            }
-            Button("Present Picker") {
+        @State var pickerResult: [UIImage] = []
+        var config: PHPickerConfiguration  {
+           var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.filter = .images //videos, livePhotos...
+            config.selectionLimit = 0 //0 => any, set 1-2-3 for har limit
+            return config
+        }
+        
+        var body: some View {
+            ScrollView {
+                LazyVStack {
+                    Button("Present Picker") {
                         isPresented.toggle()
                     }.sheet(isPresented: $isPresented) {
-                       // var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-                       // configuration.selectionLimit=0
-                        //configuration.filter = .images
-                        PhotoPicker(isPresented: $isPresented)
+                        PhotoPicker(configuration: self.config,
+                                    pickerResult: $pickerResult,
+                                    isPresented: $isPresented)
                     }
+                    ForEach(pickerResult, id: \.self) { image in
+                        Image.init(uiImage: image)
+                            .resizable()
+                            .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                }
+            }
         }
-    }
 }
 struct PhotoPicker: UIViewControllerRepresentable {
-        
-    typealias UIViewControllerType = PHPickerViewController
+    let configuration: PHPickerConfiguration
+    @Binding var pickerResult: [UIImage]
     @Binding var isPresented: Bool
-    var itemProviders: [NSItemProvider] = []
-    var images: [UIImage] = []
     func makeUIViewController(context: Context) -> PHPickerViewController {
-        var configuration = PHPickerConfiguration()
-        configuration.selectionLimit = 0
-        configuration.filter = .any(of: [.images, .livePhotos])
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = context.coordinator
-        return picker
+        let controller = PHPickerViewController(configuration: configuration)
+        controller.delegate = context.coordinator
+        return controller
     }
-    
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-        
-    }
-    
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) { }
     func makeCoordinator() -> Coordinator {
-            return PhotoPicker.Coordinator(parent: self)
+        Coordinator(self)
     }
     
-    class Coordinator: NSObject, PHPickerViewControllerDelegate, UINavigationControllerDelegate {
+    /// PHPickerViewControllerDelegate => Coordinator
+    class Coordinator: PHPickerViewControllerDelegate {
+        
+        private let parent: PhotoPicker
+        
+        init(_ parent: PhotoPicker) {
+            self.parent = parent
+        }
+        
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             
-            var parent: PhotoPicker
-            
-            init(parent: PhotoPicker) {
-                    self.parent = parent
-            }
-            
-            func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-                    picker.dismiss(animated: true)
-                    if !results.isEmpty {
-                            parent.itemProviders = []
-                            parent.images = []
+            for image in results {
+                if image.itemProvider.canLoadObject(ofClass: UIImage.self)  {
+                    image.itemProvider.loadObject(ofClass: UIImage.self) { (newImage, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            self.parent.pickerResult.append(newImage as! UIImage)
+                        }
                     }
-                    
-                    parent.itemProviders = results.map(\.itemProvider)
-                    loadImage()
+                } else {
+                    print("Loaded Assest is not a Image")
+                }
             }
-            
-            private func loadImage() {
-                    for itemProvider in parent.itemProviders {
-                            if itemProvider.canLoadObject(ofClass: UIImage.self) {
-                                    itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
-                                            if let image = image as? UIImage {
-                                                    self.parent.images.append(image)
-                                            } else {
-                                                    print("Could not load image", error?.localizedDescription ?? "")
-                                            }
-                                    }
-                            }
-                    }
-            }
+            // dissmiss the picker
+            parent.isPresented = false
+        }
     }
 }
 struct analyzeView_Previews: PreviewProvider {
