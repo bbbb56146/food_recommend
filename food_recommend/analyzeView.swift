@@ -9,35 +9,50 @@ import SwiftUI
 import PhotosUI
 
 struct analyzeView: View {
-    @State var isAnalyzeStart: Bool = false
     @State private var isPresented: Bool = false
+    @State var pickerResult: [UIImage] = []
+    var config: PHPickerConfiguration  {
+        var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+        config.filter = .images //videos, livePhotos...
+        config.selectionLimit = 0 //0 => any, set 1-2-3 for har limit
+        return config
+    }
+    
     var body: some View {
-        VStack(alignment: .leading){
-            Text("사진을 분석합니다!")
+        VStack{
+            Text("사진 분석하기")
                 .font(.largeTitle)
-                .fontWeight(.black)
-                .multilineTextAlignment(.leading)
-            //Spacer()
-            Button(action: {
-                print("button pressed!")
-                self.isAnalyzeStart = true
-            }) {
-                Text("분석하려면 누르세요..")
-            }
-            .alert(isPresented: self.$isAnalyzeStart){
-                Alert(title: Text("분석 중.."), message: Text("열심히 분석하고 있어요!"), dismissButton: .default(Text("취소")))
-            }
             Button("Present Picker") {
-                        isPresented.toggle()
-                    }.sheet(isPresented: $isPresented) {
-                        let configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-                        PhotoPicker(configuration: configuration, isPresented: $isPresented)
-                    }
+                isPresented.toggle()
+            }.sheet(isPresented: $isPresented) {
+                PhotoPicker(configuration: self.config, pickerResult: $pickerResult, isPresented: $isPresented)
+            }
+            //이미지 결과 가지고 분석 돌리기
+            
+            //분석한 결과 json으로 바꾸기
         }
+//        ScrollView {
+//            LazyVStack {
+//                Button("Present Picker") {
+//                    isPresented.toggle()
+//                }.sheet(isPresented: $isPresented) {
+//                    PhotoPicker(configuration: self.config,
+//                                pickerResult: $pickerResult,
+//                                isPresented: $isPresented)
+//                }
+//                ForEach(pickerResult, id: \.self) { image in
+//                    Image.init(uiImage: image)
+//                        .resizable()
+//                        .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
+//                        .aspectRatio(contentMode: .fit)
+//                }
+//            }
+//        }
     }
 }
 struct PhotoPicker: UIViewControllerRepresentable {
     let configuration: PHPickerConfiguration
+    @Binding var pickerResult: [UIImage]
     @Binding var isPresented: Bool
     func makeUIViewController(context: Context) -> PHPickerViewController {
         let controller = PHPickerViewController(configuration: configuration)
@@ -49,17 +64,32 @@ struct PhotoPicker: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
-    // Use a Coordinator to act as your PHPickerViewControllerDelegate
+    /// PHPickerViewControllerDelegate => Coordinator
     class Coordinator: PHPickerViewControllerDelegate {
-      
+        
         private let parent: PhotoPicker
         
         init(_ parent: PhotoPicker) {
             self.parent = parent
         }
+        
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            print(results)
-            parent.isPresented = false // Set isPresented to false because picking has finished.
+            
+            for image in results {
+                if image.itemProvider.canLoadObject(ofClass: UIImage.self)  {
+                    image.itemProvider.loadObject(ofClass: UIImage.self) { (newImage, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            self.parent.pickerResult.append(newImage as! UIImage)
+                        }
+                    }
+                } else {
+                    print("Loaded Assest is not a Image")
+                }
+            }
+            // dissmiss the picker
+            parent.isPresented = false
         }
     }
 }

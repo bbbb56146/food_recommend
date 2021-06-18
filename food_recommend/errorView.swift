@@ -17,7 +17,7 @@ struct errorView: View {
             //Spacer()
             Button(action: {
                 print("goto main!")
-                ContentView()
+                //ContentView()
             }) {
                 Text("메인 화면으로 돌아가기")
             }
