@@ -11,12 +11,13 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selection) {
             analyzeView().tabItem {
-                Image(systemName: "1.circle")
-                Text("분석")
-                .font(.headline) }.tag(1)
+                Image(systemName: "eyedropper")
+               // Text("분석").font(.headline)
+            }.tag(1)
             todayRecommendView().tabItem {
-                Image(systemName: "2.circle")
-                Text("추천").font(.largeTitle) }.tag(2)
+                Image(systemName: "map")
+              //  Text("추천").font(.largeTitle)
+            }.tag(2)
             
         }
 

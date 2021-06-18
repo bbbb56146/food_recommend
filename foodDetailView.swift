@@ -46,10 +46,10 @@ struct foodDetailView: View {
         }
     }
 }
-func filter(foodname: String) -> [StoreList]{
-    var filteredList = [StoreList]()
-    let data = StoreList.all()
-    for store in data {
+func filter(foodname: String) -> [Store]{
+    var filteredList = [Store]()
+    @ObservedObject var storeList: StoreList = StoreList(stores: storeData)
+    for store in storeList.stores {
         if store.food == foodname {
             filteredList.append(store)
         }
@@ -58,7 +58,7 @@ func filter(foodname: String) -> [StoreList]{
 }
 
 struct foodDetailView_Previews: PreviewProvider {
-    static let previewFoodList = FoodList(name: "피자", imageUrl: "plate-2802332_640", totalNum: 22)
+    static let previewFoodList = FoodList(id: "2", name: "피자", imageUrl: "plate-2802332_640", totalNum: 22)
     static var previews: some View {
         foodDetailView(selectedFood: previewFoodList)
     }

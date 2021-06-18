@@ -27,9 +27,11 @@ struct analyzeView: View {
             }.sheet(isPresented: $isPresented) {
                 PhotoPicker(configuration: self.config, pickerResult: $pickerResult, isPresented: $isPresented)
             }
-            //이미지 결과 가지고 분석 돌리기
+            //이미지 결과 (pickerResult) 가지고 분석 돌리기
             
             //분석한 결과 json으로 바꾸기
+            
+            //결과 : userMenuData.json
         }
 //        ScrollView {
 //            LazyVStack {
