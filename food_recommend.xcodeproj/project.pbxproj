@@ -78,17 +78,15 @@
 		3E26420F2663D3E300F043B5 /* food_recommend */ = {
 			isa = PBXGroup;
 			children = (
+				3E26421E2663D3EB00F043B5 /* Info.plist */,
 				3E2642102663D3E300F043B5 /* AppDelegate.swift */,
 				3E2642122663D3E300F043B5 /* SceneDelegate.swift */,
 				3E2642162663D3EB00F043B5 /* Assets.xcassets */,
 				3E26421B2663D3EB00F043B5 /* LaunchScreen.storyboard */,
-				3E263CA5266446320062374E /* todayRecommendView.swift */,
 				3E2642182663D3EB00F043B5 /* Preview Content */,
-				3E9DE6CC2664925D00476E84 /* MapView.swift */,
 				3E52DAA4267D204200A60D48 /* view */,
 				3E52DAA3267D202C00A60D48 /* user-menu */,
 				3E52DAA2267D1FF600A60D48 /* store */,
-				3E26421E2663D3EB00F043B5 /* Info.plist */,
 			);
 			path = food_recommend;
 			sourceTree = "<group>";
@@ -126,10 +124,12 @@
 		3E52DAA4267D204200A60D48 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				3E263CA926644DB60062374E /* errorView.swift */,
-				3E263CA726644AB50062374E /* analyzeView.swift */,
 				3E2642142663D3E300F043B5 /* ContentView.swift */,
+				3E263CA5266446320062374E /* todayRecommendView.swift */,
 				3E263CA326642E5A0062374E /* foodDetailView.swift */,
+				3E9DE6CC2664925D00476E84 /* MapView.swift */,
+				3E263CA726644AB50062374E /* analyzeView.swift */,
+				3E263CA926644DB60062374E /* errorView.swift */,
 			);
 			name = view;
 			path = ..;

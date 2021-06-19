@@ -28,7 +28,6 @@ struct todayRecommendView: View {
     }//body end
 }//view end
 
-//Cell은 별도의 파일로 분리하셔도 상관없습니다.
 struct FoodListCell: View {
 
     let foodList: FoodList

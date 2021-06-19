@@ -7,18 +7,21 @@
 import SwiftUI
 
 struct foodDetailView: View {
+    @State var isTapped = false
+    @State var tappedStoreName = ""
     let selectedFood: FoodList
     var body: some View {
         ZStack {
             //맵뷰
-            MapView()
+            MapView(isTapped: $isTapped, tappedStoreName: $tappedStoreName, stores: filter(foodname: self.selectedFood.name))
+            //MapView()
             //가게 리스트
             VStack{
                 Spacer()
-                let storeLists = filter(foodname: self.selectedFood.name)
+                let stores = filter(foodname: self.selectedFood.name)
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(alignment: .bottom){
-                        ForEach(storeLists, id: \.id){ store in
+                        ForEach(stores, id: \.id){ store in
                             VStack(alignment: .leading) {
                                 HStack{
                                     Text(store.name).font(.title).fontWeight(.semibold).multilineTextAlignment(.leading)
@@ -30,7 +33,10 @@ struct foodDetailView: View {
                                 
                             }//Vstack end
                             .onTapGesture{
+                                isTapped = true;
                                 print("tapped \(store.name)")
+                                tappedStoreName = store.name
+                                
                             }
                             .padding()
                             .frame(height: 150)
