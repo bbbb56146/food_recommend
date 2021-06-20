@@ -20,14 +20,14 @@ struct StoreInfo: Codable, Identifiable{
     var category_group_code: String
     var category_group_name: String
     var category_name: String
-    var distance: Int
+    var distance: String
     var id: String
     var phone: String
     var place_name : String
     var place_url: String
-    var load_address_name: String
-    var x: Double
-    var y: Double
+    var road_address_name: String
+    var x: String
+    var y: String
 }
 struct SameNameMenu: Codable{
     var keyword : String
@@ -41,8 +41,8 @@ struct Meta : Codable{
     var total_count : Int
 }
 struct RecoMenu : Codable{
-    var menuName : String
-    var document: [StoreInfo]
+    //var menuName : String
+    var documents: [StoreInfo]
     var meta : Meta
 }
 struct Response: Codable {

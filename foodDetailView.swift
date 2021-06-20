@@ -29,7 +29,7 @@ struct foodDetailView: View {
                                     Text("\(store.distance) M")
                                         .multilineTextAlignment(.trailing)
                                 }
-                                Text(store.load_address_name).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                                Text(store.road_address_name).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                                 
                             }//Vstack end
                             
@@ -47,13 +47,15 @@ struct foodDetailView: View {
                             .foregroundColor(.black)
                             .cornerRadius(15.0)
                         }//for each end
-                        .onAppear(perform: loadData)
+                       // .onAppear(perform: loadData)
                     }//hstack end
                 }
+                .onAppear(perform: loadData)
             }
         }
     }//end of body
     func loadData(){
+        print(selectedFood)
         let str = IP+"/detail/"+self.selectedFood
         print("Start load")
         if let encoded = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encoded) {
@@ -70,11 +72,11 @@ struct foodDetailView: View {
                 let decoder = JSONDecoder()
                 print("decoder")
                 do {
-                  let result = try decoder.decode([StoreInfo].self, from: data)
+                  let result = try decoder.decode(RecoMenu.self, from: data)
                     print(result)
                     print("SUCCESS")
                     DispatchQueue.main.async {
-                        self.stores = result
+                        self.stores = result.documents
                     }
                 } catch {
                   print(error)
