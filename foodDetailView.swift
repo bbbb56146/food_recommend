@@ -32,6 +32,7 @@ struct foodDetailView: View {
                                 Text(store.load_address_name).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                                 
                             }//Vstack end
+                            
                             .onTapGesture{
                                 isTapped = true;
                                 print("tapped \(store.place_name)")
@@ -53,24 +54,44 @@ struct foodDetailView: View {
         }
     }//end of body
     func loadData(){
-        
-        if let url = URL(string: IP+"/detail/"+selectedFood) {
+        let str = IP+"/detail/"+self.selectedFood
+        print("Start load")
+        if let encoded = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encoded) {
             var request = URLRequest.init(url: url)
             request.httpMethod = "GET"
-
             URLSession.shared.dataTask(with: request) { (data, response, error) in
-                guard let data = data else { return }
-
+                guard let data = data else {
+                    print("err at data")
+                    return
+                    
+                }
+                print("data start")
                 // data
                 let decoder = JSONDecoder()
-                if let json = try? decoder.decode(StoreInfo.self, from: data) {
-                    print(json) // hyeon
-                    //원하는 작업 하기
-                    print("===END OF StoreInfo==")
+                print("decoder")
+                do {
+                  let result = try decoder.decode([StoreInfo].self, from: data)
+                    print(result)
+                    print("SUCCESS")
+                    DispatchQueue.main.async {
+                        self.stores = result
+                    }
+                } catch {
+                  print(error)
                 }
+//                print(String(decoding: data, as:UTF8.self))
+//                if let json = try! decoder.decode(InfoReco.self, from: data) {
+//                    print(json) // hyeon
+//                    //원하는 작업 하기
+//                    print("===END OF INFORECO==")
+//                }
+//                print("can't decode")
             }.resume()
         }
-    }
+        else{
+            print("url fail")
+        }
+    }//loadData End
 }
 
 struct foodDetailView_Previews: PreviewProvider {
