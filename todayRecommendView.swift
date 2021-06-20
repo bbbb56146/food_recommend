@@ -19,6 +19,7 @@ struct todayRecommendView: View {
                 NavigationLink(destination: foodDetailView(selectedFood: food.name)){
                    // print("in View: "+foodList.name)
                     FoodListCell(foodList: food)
+                       // .onTapGesture()
                 }
             }
             .onAppear(perform: loadData)
