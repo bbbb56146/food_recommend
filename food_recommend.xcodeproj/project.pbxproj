@@ -23,6 +23,7 @@
 		3E52DA9D267D163F00A60D48 /* storeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E52DA9C267D163F00A60D48 /* storeData.json */; };
 		3E52DA9F267D193700A60D48 /* storeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52DA9E267D193600A60D48 /* storeData.swift */; };
 		3E52DAA1267D1C2D00A60D48 /* StoreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52DAA0267D1C2D00A60D48 /* StoreList.swift */; };
+		3E52DAA9267E4EA100A60D48 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52DAA8267E4EA100A60D48 /* request.swift */; };
 		3E9DE6CD2664925D00476E84 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9DE6CC2664925D00476E84 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		3E52DA9C267D163F00A60D48 /* storeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = storeData.json; sourceTree = "<group>"; };
 		3E52DA9E267D193600A60D48 /* storeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storeData.swift; sourceTree = "<group>"; };
 		3E52DAA0267D1C2D00A60D48 /* StoreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreList.swift; sourceTree = "<group>"; };
+		3E52DAA8267E4EA100A60D48 /* request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = request.swift; sourceTree = "<group>"; };
 		3E9DE6CC2664925D00476E84 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 				3E2642162663D3EB00F043B5 /* Assets.xcassets */,
 				3E26421B2663D3EB00F043B5 /* LaunchScreen.storyboard */,
 				3E2642182663D3EB00F043B5 /* Preview Content */,
+				3E52DAA7267E4E4500A60D48 /* JSON */,
 				3E52DAA4267D204200A60D48 /* view */,
 				3E52DAA3267D202C00A60D48 /* user-menu */,
 				3E52DAA2267D1FF600A60D48 /* store */,
@@ -132,6 +135,15 @@
 				3E263CA926644DB60062374E /* errorView.swift */,
 			);
 			name = view;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		3E52DAA7267E4E4500A60D48 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				3E52DAA8267E4EA100A60D48 /* request.swift */,
+			);
+			name = JSON;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -216,6 +228,7 @@
 				3E263CA826644AB50062374E /* analyzeView.swift in Sources */,
 				3E2642132663D3E300F043B5 /* SceneDelegate.swift in Sources */,
 				3E26422B26641D4200F043B5 /* menu.swift in Sources */,
+				3E52DAA9267E4EA100A60D48 /* request.swift in Sources */,
 				3E9DE6CD2664925D00476E84 /* MapView.swift in Sources */,
 				3E2642292664180400F043B5 /* store.swift in Sources */,
 				3E2642152663D3E300F043B5 /* ContentView.swift in Sources */,
