@@ -14,10 +14,18 @@ struct MapView : View {
     @Binding var isTapped :Bool
     @Binding var tappedStoreName : String
     @Binding var stores : [StoreInfo]
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5514516, longitude: 126.943000), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5514516, longitude: 126.943000), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
 //    var locManager : CLLocationManager = CLLocationManager()
 //    locManager.requestWhenInUseAuthorization()
-        
+    @ObservedObject var locationManager = LocationManager()
+//
+//    var userLatitude: String {
+//        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+//    }
+//
+//    var userLongitude: String {
+//        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+//    }
     var body: some View {
         
         //user location 표시 되도록 하기,,,
