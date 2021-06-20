@@ -11,15 +11,19 @@ struct todayRecommendView: View {
    
     //let foodLists = FoodList.all()
     @State var info = [InfoReco]()
+  //  var feedback = [UserMenu]()
     var body: some View {
         NavigationView {
             List(info, id: \.name) { food in
                     //print("in List: "+foodList.name)
-    
+                //self.feedback.append(UserMenu(food.name))
                 NavigationLink(destination: foodDetailView(selectedFood: food.name)){
                    // print("in View: "+foodList.name)
                     FoodListCell(foodList: food)
-                       // .onTapGesture()
+//                        .onTapGesture(){
+//                            //struct
+//
+//                        }
                 }
             }
             .onAppear(perform: loadData)
@@ -35,6 +39,11 @@ struct todayRecommendView: View {
         //navigation end
         
     }//body end
+//    func makeFeedback(){
+//        var name: String
+//        feedback.append(UserMenu(name: name))
+//        return
+//    }
     func loadData(){
         let str = IP+"""
 //reco?food_freq={"닭갈비": 6, "오일파스타": 8, "김밥": 3, "된장찌개": 5, "쌀국수": 2}&user_feedback={"닭갈비": 4, "김밥": 13, "떡볶이": 7}
@@ -84,13 +93,14 @@ struct FoodListCell: View {
 
     var body: some View {
 
-            VStack(alignment: .leading) {
-                Text(foodList.name).font(.title).fontWeight(.semibold)
-                HStack{
-                    Text("\(foodList.num) 가게")
-                    Spacer()
-                    Text("\(foodList.similarity) %")
-                }
+        VStack (alignment: .leading){
+                Text(foodList.name).font(.title)
+                //HStack{
+               //     Text("\(foodList.num) 가게")
+               //     Spacer()
+                Text(String(format:"%.4f"+"%% matched",foodList.similarity*100))
+                    .font(.caption)
+               // }
 
             }
     }

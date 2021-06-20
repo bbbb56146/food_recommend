@@ -55,7 +55,20 @@ public var query = """
 """
 public var IP = "http://52.79.168.220:5000"
 
-
+struct UserMenu: Codable{
+    var name:String
+    var freq: Int=0
+}
+class Feedback: ObservableObject{
+    @Published var name :String
+    @Published var freq : Int
+    
+    init(foodName: String, foodFreq: Int){
+        name = foodName
+        freq = foodFreq
+    }
+  
+}
 
 
 //func loadData<Response: Decodable>(_ query: String) -> Response{
