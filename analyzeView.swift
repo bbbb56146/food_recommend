@@ -20,33 +20,76 @@ struct analyzeView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading){
+        VStack{
+            VStack(alignment: .leading){
             Text("4단계로 사진 올리기!")
-                .font(.largeTitle).bold()
+                .font(.largeTitle)
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .padding(.vertical)
+                .multilineTextAlignment(.center)
             Group{
-            Text("1. present picker 버튼을 누르세요.")
-            Text("2. search bar에 '음식' 검색")
-            Text("3. 손가락을 드래그 해 여러 사진을 선택할 수 있어요!")
-            Text("4. 분석하기 버튼을 누르세요.")
+                //Text("")
+                Text("1. present picker 버튼을 누르세요.")
+                Text("2. search bar에 '음식' 검색")
+                Text("3. 손가락을 drag해 여러 사진을 선택할 수 있어요!")
+                Text("4. 분석하기 버튼을 누르세요.")
+                Text("")
             }
+            //.padding(.bottom)
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1568627451, green: 0.3882352941, blue: 0.9764705882, alpha: 0.786106438)), Color(#colorLiteral(red: 0.4156862745, green: 0.1568627451, blue: 0.9764705882, alpha: 0.8517746073))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    //.padding(.top)
+            )
+            .foregroundColor(.white)
+            .cornerRadius(25.0, corners:[.bottomLeft, .bottomRight])
+            .edgesIgnoringSafeArea(.top)
+            Spacer()
+            
             Button("Present Picker") {
                 isPresented.toggle()
             }.sheet(isPresented: $isPresented) {
                 PhotoPicker(configuration: self.config, pickerResult: $pickerResult, isPresented: $isPresented)
             }
+            .padding()
+            .font(.title)
+            .frame(maxWidth:.infinity, minHeight: 120,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/ )
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1568627451, green: 0.3882352941, blue: 0.9764705882, alpha: 0.8236256783)), Color(#colorLiteral(red: 0.4156862745, green: 0.1568627451, blue: 0.9764705882, alpha: 0.7484008587))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    //.padding(.top)
+            )
+            .foregroundColor(.white)
+            .cornerRadius(25.0)
+            .ignoresSafeArea()
+            
+            Spacer()
+            
             Button("분석하기") {
                 isAleart.toggle()
             }.alert(isPresented: self.$isAleart){
                 Alert(title: Text("분석 중.."), message: Text("열심히 분석하고 있어요!"), dismissButton: .default(Text("취소")))
             }
+            .font(.title)
+            .padding()
+            .frame(maxWidth:.infinity, minHeight: 120,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/ )
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1568627451, green: 0.3882352941, blue: 0.9764705882, alpha: 0.7827434413)), Color(#colorLiteral(red: 0.4156862745, green: 0.1568627451, blue: 0.9764705882, alpha: 0.7484008587))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    //.padding(.top)
+            )
+            .foregroundColor(.white)
+            .cornerRadius(25.0)
+            Spacer()
             //이미지 결과 (pickerResult) 가지고 분석 돌리기
             
             //분석한 결과 json으로 바꾸기
             
             //결과 : userMenuData.json
         }
+        .edgesIgnoringSafeArea(.top)
     }
-    
+
 }
 struct PhotoPicker: UIViewControllerRepresentable {
     let configuration: PHPickerConfiguration
@@ -91,6 +134,23 @@ struct PhotoPicker: UIViewControllerRepresentable {
         }
     }
 }
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
+
+
 struct analyzeView_Previews: PreviewProvider {
     static var previews: some View {
         analyzeView()

@@ -35,7 +35,7 @@ struct MapView : View {
             item in
             
             MapMarker(coordinate: CLLocationCoordinate2D(latitude: Double(item.y) ?? 1, longitude: Double(item.x) ?? 1)
-, tint: tappedStoreName == item.place_name ? .red : .black)
+, tint: tappedStoreName == item.place_name ? Color(#colorLiteral(red: 0.9764705882, green: 0.6980392157, blue: 0.1568627451, alpha: 1)) : .gray)
         }
             .edgesIgnoringSafeArea(.all)
     }
