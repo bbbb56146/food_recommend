@@ -9,33 +9,33 @@ import SwiftUI
 struct foodDetailView: View {
     @State var isTapped = false
     @State var tappedStoreName = ""
-    let selectedFood: FoodList
+    let selectedFood: String
+    @State var stores = [StoreInfo]()
     var body: some View {
         ZStack {
             //맵뷰
-            MapView(isTapped: $isTapped, tappedStoreName: $tappedStoreName, stores: filter(foodname: self.selectedFood.name))
+            MapView(isTapped: $isTapped, tappedStoreName: $tappedStoreName, stores: $stores)
             //MapView()
             //가게 리스트
             VStack{
                 Spacer()
-                let stores = filter(foodname: self.selectedFood.name)
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(alignment: .bottom){
                         ForEach(stores, id: \.id){ store in
                             VStack(alignment: .leading) {
                                 HStack{
-                                    Text(store.name).font(.title).fontWeight(.semibold).multilineTextAlignment(.leading)
+                                    Text(store.place_name).font(.title).fontWeight(.semibold).multilineTextAlignment(.leading)
                                     Spacer()
-                                    Text("\(store.len) M")
+                                    Text("\(store.distance) M")
                                         .multilineTextAlignment(.trailing)
                                 }
-                                Text(store.addr).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                                Text(store.load_address_name).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                                 
                             }//Vstack end
                             .onTapGesture{
                                 isTapped = true;
-                                print("tapped \(store.name)")
-                                tappedStoreName = store.name
+                                print("tapped \(store.place_name)")
+                                tappedStoreName = store.place_name
                                 
                             }
                             .padding()
@@ -46,26 +46,36 @@ struct foodDetailView: View {
                             .foregroundColor(.black)
                             .cornerRadius(15.0)
                         }//for each end
+                        .onAppear(perform: loadData)
                     }//hstack end
                 }
             }
         }
-    }
-}
-func filter(foodname: String) -> [Store]{
-    var filteredList = [Store]()
-    @ObservedObject var storeList: StoreList = StoreList(stores: storeData)
-    for store in storeList.stores {
-        if store.food == foodname {
-            filteredList.append(store)
+    }//end of body
+    func loadData(){
+        
+        if let url = URL(string: IP+"/detail/"+selectedFood) {
+            var request = URLRequest.init(url: url)
+            request.httpMethod = "GET"
+
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard let data = data else { return }
+
+                // data
+                let decoder = JSONDecoder()
+                if let json = try? decoder.decode(StoreInfo.self, from: data) {
+                    print(json) // hyeon
+                    //원하는 작업 하기
+                    print("===END OF StoreInfo==")
+                }
+            }.resume()
         }
     }
-    return filteredList
 }
 
 struct foodDetailView_Previews: PreviewProvider {
-    static let previewFoodList = FoodList(id: "2", name: "피자", imageUrl: "plate-2802332_640", totalNum: 22)
+
     static var previews: some View {
-        foodDetailView(selectedFood: previewFoodList)
+        foodDetailView(selectedFood: "떡")
     }
 }

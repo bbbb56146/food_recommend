@@ -10,6 +10,7 @@ import PhotosUI
 
 struct analyzeView: View {
     @State private var isPresented: Bool = false
+    @State private var isAleart: Bool = false
     @State var pickerResult: [UIImage] = []
     var config: PHPickerConfiguration  {
         var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
@@ -21,11 +22,21 @@ struct analyzeView: View {
     var body: some View {
         VStack{
             Text("사진 분석하기")
-                .font(.largeTitle)
+                .font(.largeTitle).bold()
+            Text("1. present picker 버튼을 누르세요.")
+            Text("2. search bar에 '음식' 검색")
+            Text("3. 손가락을 드래그 하면 쉽게 여러 사진을 선택할 수 있어요!")
+            Text("4. 제출")
+            Text("5. 분석하기 버튼을 누르세요.")
             Button("Present Picker") {
                 isPresented.toggle()
             }.sheet(isPresented: $isPresented) {
                 PhotoPicker(configuration: self.config, pickerResult: $pickerResult, isPresented: $isPresented)
+            }
+            Button("분석하기") {
+                isAleart.toggle()
+            }.alert(isPresented: self.$isAleart){
+                Alert(title: Text("분석 중.."), message: Text("열심히 분석하고 있어요!"), dismissButton: .default(Text("취소")))
             }
             //이미지 결과 (pickerResult) 가지고 분석 돌리기
             
@@ -33,24 +44,8 @@ struct analyzeView: View {
             
             //결과 : userMenuData.json
         }
-//        ScrollView {
-//            LazyVStack {
-//                Button("Present Picker") {
-//                    isPresented.toggle()
-//                }.sheet(isPresented: $isPresented) {
-//                    PhotoPicker(configuration: self.config,
-//                                pickerResult: $pickerResult,
-//                                isPresented: $isPresented)
-//                }
-//                ForEach(pickerResult, id: \.self) { image in
-//                    Image.init(uiImage: image)
-//                        .resizable()
-//                        .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
-//                        .aspectRatio(contentMode: .fit)
-//                }
-//            }
-//        }
     }
+    
 }
 struct PhotoPicker: UIViewControllerRepresentable {
     let configuration: PHPickerConfiguration

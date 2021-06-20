@@ -6,7 +6,7 @@
 //
 
 struct FoodList : Codable, Identifiable {
-    var id: String    
+    var id: String
     var name: String
     var imageUrl: String
     var totalNum : Int
@@ -22,3 +22,17 @@ extension FoodList {
         ]
     }
 }
+
+struct User_menu : Codable{
+    var name: String
+    var freq: Int
+}
+
+struct SendJSON : Codable{
+    var food_freq : User_menu
+    var user_feedback : User_menu
+}
+
+//let encoder = JSONEncoder()
+//encoder.outputFormatting = [.sortedLeys, .prettyPrinted]
+//let
