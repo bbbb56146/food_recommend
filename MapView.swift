@@ -24,7 +24,7 @@ struct MapView : View {
         Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow), annotationItems: stores){
             item in
             
-            MapMarker(coordinate: CLLocationCoordinate2D(latitude: item.y, longitude: item.x)
+            MapMarker(coordinate: CLLocationCoordinate2D(latitude: Double(item.y) ?? 1, longitude: Double(item.x) ?? 1)
 , tint: tappedStoreName == item.place_name ? .red : .black)
         }
             .edgesIgnoringSafeArea(.all)
@@ -33,7 +33,7 @@ struct MapView : View {
 }
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(isTapped:.constant(false) , tappedStoreName: .constant("aa") , stores: .constant([StoreInfo(address_name: "test", category_group_code: "test", category_group_name: "test",category_name: "test",distance: 1,id: "test",phone: "test",place_name : "test",place_url: "http:127.0.0.1:5000",load_address_name: "test",x:37.00,y: 126.00)]))
+        MapView(isTapped:.constant(false) , tappedStoreName: .constant("aa") , stores: .constant([StoreInfo(address_name: "test", category_group_code: "test", category_group_name: "test",category_name: "test",distance: "1",id: "test",phone: "test",place_name : "test",place_url: "http:127.0.0.1:5000",road_address_name: "test",x:"37.00",y: "126.00")]))
     }
 }
 

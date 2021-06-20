@@ -22,6 +22,9 @@ struct todayRecommendView: View {
                 }
             }
             .onAppear(perform: loadData)
+            .onAppear(){
+                print("reco view Disappear!")
+            }
             .navigationBarTitle(Text("오늘의 메뉴"))
             .navigationBarHidden(false)
             
