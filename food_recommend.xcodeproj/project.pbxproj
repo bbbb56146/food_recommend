@@ -17,6 +17,8 @@
 		3E2642172663D3EB00F043B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2642162663D3EB00F043B5 /* Assets.xcassets */; };
 		3E26421A2663D3EB00F043B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2642192663D3EB00F043B5 /* Preview Assets.xcassets */; };
 		3E26421D2663D3EB00F043B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E26421B2663D3EB00F043B5 /* LaunchScreen.storyboard */; };
+		3E52DAA9267E4EA100A60D48 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52DAA8267E4EA100A60D48 /* request.swift */; };
+		3E6D9A3F267F0DA400CE5C07 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6D9A3E267F0DA400CE5C07 /* LocationManager.swift */; };
 		3E9DE6CD2664925D00476E84 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9DE6CC2664925D00476E84 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		3E2642192663D3EB00F043B5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3E26421C2663D3EB00F043B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E26421E2663D3EB00F043B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E52DAA8267E4EA100A60D48 /* request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = request.swift; sourceTree = "<group>"; };
+		3E6D9A3E267F0DA400CE5C07 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3E9DE6CC2664925D00476E84 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,9 +76,9 @@
 				3E2642162663D3EB00F043B5 /* Assets.xcassets */,
 				3E26421B2663D3EB00F043B5 /* LaunchScreen.storyboard */,
 				3E2642182663D3EB00F043B5 /* Preview Content */,
+				3E52DAA7267E4E4500A60D48 /* JSON */,
 				3E52DAA4267D204200A60D48 /* view */,
-				3E52DAA3267D202C00A60D48 /* user-menu */,
-				3E52DAA2267D1FF600A60D48 /* store */,
+				3E6D9A3E267F0DA400CE5C07 /* LocationManager.swift */,
 			);
 			path = food_recommend;
 			sourceTree = "<group>";
@@ -114,6 +118,15 @@
 				3E263CA926644DB60062374E /* errorView.swift */,
 			);
 			name = view;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		3E52DAA7267E4E4500A60D48 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				3E52DAA8267E4EA100A60D48 /* request.swift */,
+			);
+			name = JSON;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -189,10 +202,12 @@
 			files = (
 				3E2642112663D3E300F043B5 /* AppDelegate.swift in Sources */,
 				3E263CAA26644DB60062374E /* errorView.swift in Sources */,
+				3E6D9A3F267F0DA400CE5C07 /* LocationManager.swift in Sources */,
 				3E263CA6266446320062374E /* todayRecommendView.swift in Sources */,
 				3E263CA426642E5A0062374E /* foodDetailView.swift in Sources */,
 				3E263CA826644AB50062374E /* analyzeView.swift in Sources */,
 				3E2642132663D3E300F043B5 /* SceneDelegate.swift in Sources */,
+				3E52DAA9267E4EA100A60D48 /* request.swift in Sources */,
 				3E9DE6CD2664925D00476E84 /* MapView.swift in Sources */,
 				3E2642152663D3E300F043B5 /* ContentView.swift in Sources */,
 			);

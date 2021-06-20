@@ -1,20 +1,4 @@
-[
-    {
-        "id" : "1",
-        "name": "팬케이크",
-        "imageUrl": "pancakes-2291908_640",
-        "totalNum": 4
-    },
-    {
-        "id" : "2",
-        "name": "피자",
-        "imageUrl": "pancakes-2291908_640",
-        "totalNum": 22
-    },
-    {
-        "id" : "3",
-        "name": "연어 스테이크",
-        "imageUrl": "pancakes-2291908_640",
-        "totalNum": 8
-    },
-]
+{
+    'food_freq': '{"닭갈비": 6, "오일파스타": 8, "김밥": 3, "된장찌개": 5, "쌀국수": 2}',
+    'user_feedback': '{"닭갈비": 4, "김밥": 13, "떡볶이": 7}'    
+}
