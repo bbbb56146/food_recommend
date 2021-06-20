@@ -40,7 +40,7 @@ struct analyzeView: View {
             .padding()
             .frame(maxWidth: .infinity)
             .background(
-                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1568627451, green: 0.3882352941, blue: 0.9764705882, alpha: 0.786106438)), Color(#colorLiteral(red: 0.4156862745, green: 0.1568627451, blue: 0.9764705882, alpha: 0.8517746073))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9803921569, green: 0.6470588235, blue: 0.3764705882, alpha: 1)), Color(#colorLiteral(red: 0.9882352941, green: 0.6705882353, blue: 0.6039215686, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     //.padding(.top)
             )
             .foregroundColor(.white)
@@ -57,7 +57,7 @@ struct analyzeView: View {
             .font(.title)
             .frame(maxWidth:.infinity, minHeight: 120,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/ )
             .background(
-                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1568627451, green: 0.3882352941, blue: 0.9764705882, alpha: 0.8236256783)), Color(#colorLiteral(red: 0.4156862745, green: 0.1568627451, blue: 0.9764705882, alpha: 0.7484008587))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9803921569, green: 0.6470588235, blue: 0.3764705882, alpha: 1)), Color(#colorLiteral(red: 0.9882352941, green: 0.6705882353, blue: 0.6039215686, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     //.padding(.top)
             )
             .foregroundColor(.white)
@@ -75,7 +75,7 @@ struct analyzeView: View {
             .padding()
             .frame(maxWidth:.infinity, minHeight: 120,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/ )
             .background(
-                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1568627451, green: 0.3882352941, blue: 0.9764705882, alpha: 0.7827434413)), Color(#colorLiteral(red: 0.4156862745, green: 0.1568627451, blue: 0.9764705882, alpha: 0.7484008587))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9803921569, green: 0.6470588235, blue: 0.3764705882, alpha: 0.8254342995)), Color(#colorLiteral(red: 0.9764705882, green: 0.7450980392, blue: 0.1568627451, alpha: 0.6900230559))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     //.padding(.top)
             )
             .foregroundColor(.white)
