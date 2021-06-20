@@ -18,6 +18,8 @@ struct MapView : View {
 //    var locManager : CLLocationManager = CLLocationManager()
 //    locManager.requestWhenInUseAuthorization()
     @ObservedObject var locationManager = LocationManager()
+    var locationM = CLLocationManager()
+    
 //
 //    var userLatitude: String {
 //        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
