@@ -20,14 +20,15 @@ struct analyzeView: View {
     }
     
     var body: some View {
-        VStack{
-            Text("사진 분석하기")
+        VStack(alignment: .leading){
+            Text("4단계로 사진 올리기!")
                 .font(.largeTitle).bold()
+            Group{
             Text("1. present picker 버튼을 누르세요.")
             Text("2. search bar에 '음식' 검색")
-            Text("3. 손가락을 드래그 하면 쉽게 여러 사진을 선택할 수 있어요!")
-            Text("4. 제출")
-            Text("5. 분석하기 버튼을 누르세요.")
+            Text("3. 손가락을 드래그 해 여러 사진을 선택할 수 있어요!")
+            Text("4. 분석하기 버튼을 누르세요.")
+            }
             Button("Present Picker") {
                 isPresented.toggle()
             }.sheet(isPresented: $isPresented) {

@@ -5,12 +5,15 @@
 //  Created by 김세연 on 2021/05/31.
 //
 import SwiftUI
+import WebKit
 
 struct foodDetailView: View {
     @State var isTapped = false
     @State var tappedStoreName = ""
     let selectedFood: String
     @State var stores = [StoreInfo]()
+    @State var doubleTapped = false;
+    @State var webUrl = ""
     var body: some View {
         ZStack {
             //맵뷰
@@ -22,6 +25,7 @@ struct foodDetailView: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(alignment: .bottom){
                         ForEach(stores, id: \.id){ store in
+                            
                             VStack(alignment: .leading) {
                                 HStack{
                                     Text(store.place_name).font(.title).fontWeight(.semibold).multilineTextAlignment(.leading)
@@ -34,10 +38,12 @@ struct foodDetailView: View {
                             }//Vstack end
                             
                             .onTapGesture{
+                                webUrl = store.place_url;
                                 isTapped = true;
                                 print("tapped \(store.place_name)")
                                 tappedStoreName = store.place_name
-                                
+                                doubleTapped = true;
+                                print(webUrl)
                             }
                             .padding()
                             .frame(height: 150)
@@ -51,6 +57,13 @@ struct foodDetailView: View {
                     }//hstack end
                 }
                 .onAppear(perform: loadData)
+<<<<<<< HEAD
+=======
+                .sheet(isPresented: $doubleTapped){
+                    MyWebView(urlToLoad: webUrl)
+                }
+
+>>>>>>> design
             }
         }
     }//end of body

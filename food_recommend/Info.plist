@@ -4,11 +4,14 @@
 <dict>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<dict/>
+<<<<<<< HEAD
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict/>
 	</dict>
+=======
+>>>>>>> design
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>내 위치 확인을 위해 권한이 필요합니다.</string>
 	<key>LSApplicationCategoryType</key>
@@ -27,6 +30,11 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -72,6 +80,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 </dict>
 </plist>
