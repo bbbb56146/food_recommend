@@ -21,6 +21,8 @@
 		3E9DE6CD2664925D00476E84 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9DE6CC2664925D00476E84 /* MapView.swift */; };
 		3ECFA06A267F414C009F7D95 /* MyImageClassifier 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFA069267F414C009F7D95 /* MyImageClassifier 1.mlmodel */; };
 		3ECFA06E267F4810009F7D95 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFA06D267F4810009F7D95 /* WebView.swift */; };
+		3ECFA072267F5D6F009F7D95 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFA071267F5D6F009F7D95 /* NavigationBarModifier.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		3E9DE6CC2664925D00476E84 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3ECFA069267F414C009F7D95 /* MyImageClassifier 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MyImageClassifier 1.mlmodel"; sourceTree = "<group>"; };
 		3ECFA06D267F4810009F7D95 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		3ECFA071267F5D6F009F7D95 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				3E9DE6CC2664925D00476E84 /* MapView.swift */,
 				3E263CA726644AB50062374E /* analyzeView.swift */,
 				3ECFA06D267F4810009F7D95 /* WebView.swift */,
+				3ECFA071267F5D6F009F7D95 /* NavigationBarModifier.swift */,
+
 			);
 			name = view;
 			path = ..;
@@ -188,19 +194,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E2642112663D3E300F043B5 /* AppDelegate.swift in Sources */,
-<<<<<<< HEAD
-				3E263CAA26644DB60062374E /* errorView.swift in Sources */,
-=======
->>>>>>> design
 				3E6D9A3F267F0DA400CE5C07 /* LocationManager.swift in Sources */,
+				3ECFA072267F5D6F009F7D95 /* NavigationBarModifier.swift in Sources */,
+				3E263CAA26644DB60062374E /* errorView.swift in Sources */,
 				3E263CA6266446320062374E /* todayRecommendView.swift in Sources */,
 				3E263CA426642E5A0062374E /* foodDetailView.swift in Sources */,
 				3E263CA826644AB50062374E /* analyzeView.swift in Sources */,
 				3E2642132663D3E300F043B5 /* SceneDelegate.swift in Sources */,
-<<<<<<< HEAD
-=======
 				3ECFA06A267F414C009F7D95 /* MyImageClassifier 1.mlmodel in Sources */,
->>>>>>> design
 				3E52DAA9267E4EA100A60D48 /* request.swift in Sources */,
 				3E9DE6CD2664925D00476E84 /* MapView.swift in Sources */,
 				3E2642152663D3E300F043B5 /* ContentView.swift in Sources */,

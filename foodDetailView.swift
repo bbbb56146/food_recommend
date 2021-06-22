@@ -27,13 +27,16 @@ struct foodDetailView: View {
                         ForEach(stores, id: \.id){ store in
                             
                             VStack(alignment: .leading) {
-                                HStack{
+                               // HStack{
                                     Text(store.place_name).font(.title).fontWeight(.semibold).multilineTextAlignment(.leading)
-                                    Spacer()
-                                    Text("\(store.distance) M")
-                                        .multilineTextAlignment(.trailing)
-                                }
-                                Text(store.road_address_name).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+
+                                 //   Spacer()
+                                    
+                                //}
+                                Text(store.road_address_name).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(3)
+                                Text("\(store.distance) M")
+                                    .multilineTextAlignment(.trailing)
+
                                 
                             }//Vstack end
                             
@@ -46,24 +49,22 @@ struct foodDetailView: View {
                                 print(webUrl)
                             }
                             .padding()
-                            .frame(height: 150)
+                            .frame(height: 130)
                             .background(
-                                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)), Color.yellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9803921569, green: 0.6470588235, blue: 0.3764705882, alpha: 1)), Color(#colorLiteral(red: 0.9882352941, green: 0.6705882353, blue: 0.6039215686, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                             )
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .cornerRadius(15.0)
                         }//for each end
                        // .onAppear(perform: loadData)
                     }//hstack end
                 }
                 .onAppear(perform: loadData)
-<<<<<<< HEAD
-=======
+
                 .sheet(isPresented: $doubleTapped){
                     MyWebView(urlToLoad: webUrl)
                 }
 
->>>>>>> design
             }
         }
     }//end of body

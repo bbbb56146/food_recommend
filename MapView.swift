@@ -18,11 +18,9 @@ struct MapView : View {
 //    var locManager : CLLocationManager = CLLocationManager()
 //    locManager.requestWhenInUseAuthorization()
     @ObservedObject var locationManager = LocationManager()
-<<<<<<< HEAD
-=======
+
     var locationM = CLLocationManager()
-    
->>>>>>> design
+
 //
 //    var userLatitude: String {
 //        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
@@ -37,8 +35,8 @@ struct MapView : View {
         Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow), annotationItems: stores){
             item in
             
-            MapMarker(coordinate: CLLocationCoordinate2D(latitude: Double(item.y) ?? 1, longitude: Double(item.x) ?? 1)
-, tint: tappedStoreName == item.place_name ? .red : .black)
+            MapMarker(coordinate: CLLocationCoordinate2D(latitude: Double(item.y) ?? 1, longitude: Double(item.x) ?? 1), tint: tappedStoreName == item.place_name ? Color(#colorLiteral(red: 0.9764705882, green: 0.6980392157, blue: 0.1568627451, alpha: 1)) : .gray)
+
         }
             .edgesIgnoringSafeArea(.all)
     }

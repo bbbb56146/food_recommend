@@ -27,15 +27,14 @@ struct todayRecommendView: View {
                 }
             }
             .onAppear(perform: loadData)
-<<<<<<< HEAD
-            .onAppear(){
-=======
+
             .onDisappear(){
->>>>>>> design
                 print("reco view Disappear!")
             }
             .navigationBarTitle(Text("오늘의 메뉴"))
-            .navigationBarHidden(false)
+            //.navigationBarHidden(true)
+            //.navigationBarColor(UIColor(Color(#colorLiteral(red: 0.9764705882, green: 0.7450980392, blue: 0.1568627451, alpha: 1))))
+
             
   
         }
