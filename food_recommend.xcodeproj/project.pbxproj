@@ -22,6 +22,7 @@
 		3ECFA06A267F414C009F7D95 /* MyImageClassifier 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFA069267F414C009F7D95 /* MyImageClassifier 1.mlmodel */; };
 		3ECFA06E267F4810009F7D95 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFA06D267F4810009F7D95 /* WebView.swift */; };
 		3ECFA072267F5D6F009F7D95 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFA071267F5D6F009F7D95 /* NavigationBarModifier.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3ECFA069267F414C009F7D95 /* MyImageClassifier 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MyImageClassifier 1.mlmodel"; sourceTree = "<group>"; };
 		3ECFA06D267F4810009F7D95 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		3ECFA071267F5D6F009F7D95 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				3E263CA726644AB50062374E /* analyzeView.swift */,
 				3ECFA06D267F4810009F7D95 /* WebView.swift */,
 				3ECFA071267F5D6F009F7D95 /* NavigationBarModifier.swift */,
+
 			);
 			name = view;
 			path = ..;
@@ -193,6 +196,7 @@
 				3E2642112663D3E300F043B5 /* AppDelegate.swift in Sources */,
 				3E6D9A3F267F0DA400CE5C07 /* LocationManager.swift in Sources */,
 				3ECFA072267F5D6F009F7D95 /* NavigationBarModifier.swift in Sources */,
+				3E263CAA26644DB60062374E /* errorView.swift in Sources */,
 				3E263CA6266446320062374E /* todayRecommendView.swift in Sources */,
 				3E263CA426642E5A0062374E /* foodDetailView.swift in Sources */,
 				3E263CA826644AB50062374E /* analyzeView.swift in Sources */,

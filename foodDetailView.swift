@@ -29,12 +29,14 @@ struct foodDetailView: View {
                             VStack(alignment: .leading) {
                                // HStack{
                                     Text(store.place_name).font(.title).fontWeight(.semibold).multilineTextAlignment(.leading)
+
                                  //   Spacer()
                                     
                                 //}
                                 Text(store.road_address_name).font(.body).fontWeight(.thin).multilineTextAlignment(.leading).lineLimit(3)
                                 Text("\(store.distance) M")
                                     .multilineTextAlignment(.trailing)
+
                                 
                             }//Vstack end
                             
@@ -58,6 +60,7 @@ struct foodDetailView: View {
                     }//hstack end
                 }
                 .onAppear(perform: loadData)
+
                 .sheet(isPresented: $doubleTapped){
                     MyWebView(urlToLoad: webUrl)
                 }
